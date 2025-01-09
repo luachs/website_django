@@ -1,0 +1,22 @@
+.hero-payment h3 {
+  margin-top: 70px;
+  text-align: center;
+  font-size: 30px;
+}
+.payment-type {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  font-size: 20px;
+}
+.prepayment,
+.pay-later {
+  background: #e2dcdc;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.prepayment:hover,
+.pay-later:hover {
+  background: #736e6e;
+}

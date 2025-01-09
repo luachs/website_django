@@ -1,0 +1,132 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <!-- header -->
+    <div class="header">
+      <div class="list-social">
+        <div class="list__social inst">
+          <a href=""><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <div class="list__social face">
+          <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+        <div class="list__social twit">
+          <a href=""> <i class="fa-brands fa-twitter"></i></a>
+        </div>
+        <div class="list__social tikt">
+          <a href=""><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="support-bar">
+        <div class="support-bar-search"><img src={% static "img/search.png" %} alt="" /></div>
+        <div class="support-bar-account"><img src={% static "img/account.png" %} alt="" /></div>
+      </div>
+    </div>
+    <div class="header-logo"><img src="{% static "img/logo.png" %}" alt="" /></div>
+    <!-- hero -->
+    <div class="hero">
+      <!-- menu -->
+      <div class="menu">
+        <a href="{% url 'home' %}">
+          <div class="menu-pages">TRANG CHỦ</div>
+        </a>
+        <a href="{% url 'product' %}">
+          <div class="menu-pages">SẢN PHẨM</div>
+        </a>
+        <a href="{% url 'cart' %}">
+          <div class="menu-pages menu-active">GIỎ HÀNG</div>
+        </a>
+        <a href="{% url 'contact' %}">
+          <div class="menu-pages">LIÊN HỆ</div>
+        </a>
+      </div>
+      <div class="container mt-5">
+        <h2 class="mb-4">Giỏ Hàng</h2>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col ">Sản Phẩm</th>
+              <th scope="col">Số Lượng</th>
+              <th scope="col">Giá</th>
+              <th scope="col">Tùy Chọn</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Sản phẩm 1 -->
+            {%for item in items%}
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <img src="{{ item.product.ImageURL }}" class="img-thumbnail me-3" style="width: 40px; height: 40px" />
+                  <span>{{ item.product.name }}</span>
+                </div>
+              </td>
+              <td><input type="number" class="form-control mx-2 text-center" value="{{ item.quantity }}" min="1" style="width: 60px" data-id="{{ item.id }}" /></td>
+              <td>{{item.product.price}}</td>
+
+              <td><button class="btn btn-danger btn-sm">Xóa</button></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <!-- Tổng tiền -->
+        <div class="row">
+          <div class="col-md-6">
+            <button class="btn btn-primary">Tiếp Tục Mua Sắm</button>
+          </div>
+          <div class="col-md-6 text-right">
+            <h4>Tổng Số lượng: <span id="total-price">{{ order.get_cart_items }} sản phẩm</span></h4>
+            <h4>Tổng Tiền: <span id="total-price">{{ order.get_cart_total }} đ</span></h4>
+            <a href="{%url 'payment'%}"><button class="btn btn-success">Thanh Toán</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <div class="footer">
+      <div class="footer-box">
+        <a class="footer-box-left" href="">
+          <i class="fa-brands fa-instagram"></i>
+          <span>KAIJEWELRY</span>
+        </a>
+        <a class="footer-box-left" href="">
+          <i class="fa-brands fa-facebook-f"></i>
+          <span>KAIJEWELRY</span>
+        </a>
+        <a class="footer-box-left" href="">
+          <i class="fa-solid fa-phone-flip"></i>
+          <span>098.6162.868</span>
+        </a>
+        <a class="footer-box-left" href="">
+          <i class="fa-solid fa-envelope"></i>
+          <span>098.6162.868</span>
+        </a>
+      </div>
+      <div class="footer-box">
+        <div class="footer-box-icon"><img src="{% static 'img/logo.png' %}" alt="" /></div>
+        <div class="footer-box-desc">JEWELRY STORE IN SAIGON</div>
+        <div class="footer-desc">DESIGN & MADE TO ORDER</div>
+        <div class="footer-desc">since 2024</div>
+      </div>
+      <div class="footer-box">
+        <a href=""><div class="footer-desc">TRANG SỨC</div></a>
+        <a href=""><div class="footer-desc">INSTAGRAM</div></a>
+        <a href=""><div class="footer-desc">BỘ SƯU TẬP</div></a>
+        <a href=""><div class="footer-desc">BÀI VIẾT</div></a>
+        <a href=""><div class="footer-desc">THÔNG TIN</div></a>
+        <a href=""><div class="footer-desc">KAI JEWELRY</div></a>
+      </div>
+    </div>
+  </body>
+</html>

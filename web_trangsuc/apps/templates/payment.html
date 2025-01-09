@@ -1,0 +1,148 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/payment.css' %}" />
+
+    <title>Trang sức</title>
+  </head>
+  <body>
+    <!-- header -->
+    <div class="header">
+      <div class="list-social">
+        <div class="list__social inst">
+          <a href=""><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <div class="list__social face">
+          <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+        <div class="list__social twit">
+          <a href=""> <i class="fa-brands fa-twitter"></i></a>
+        </div>
+        <div class="list__social tikt">
+          <a href=""><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="support-bar">
+        <div class="support-bar-search"><img src={% static "img/search.png" %} alt="" /></div>
+        <div class="support-bar-account"><img src={% static "img/account.png" %} alt="" /></div>
+      </div>
+    </div>
+
+    <div class="header-logo"><img src="{% static "img/logo.png" %}" alt="" /></div>
+    <!-- hero -->
+    <div class="hero">
+      <!-- menu -->
+      <div class="menu">
+        <a href="{% url 'home' %}">
+          <div class="menu-pages menu-active">TRANG CHỦ</div>
+        </a>
+        <a href="{% url 'product' %}">
+          <div class="menu-pages">SẢN PHẨM</div>
+        </a>
+        <a href="{% url 'cart' %}">
+          <div class="menu-pages">GIỎ HÀNG</div>
+        </a>
+        <a href="{% url 'contact' %}">
+          <div class="menu-pages">LIÊN HỆ</div>
+        </a>
+      </div>
+      <!-- main link -->
+      <div class="list-main-link">
+        <a href="./index.html"
+          ><div class="main-link"><i class="fa-solid fa-house"></i>TRANG CHỦ</div></a
+        >/ <a href=""><div class="main-link">THANH TOÁN</div></a>
+      </div>
+      <!-- payment -->
+      <div class="container mt-5">
+        <h2 class="mb-4 text-center">Thông Tin Thanh Toán</h2>
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="cardName">Tên Chủ Thẻ</label>
+                  <input type="text" class="form-control" id="cardName" placeholder="Tên trên thẻ" required />
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="cardNumber">Số Thẻ</label>
+                  <input type="text" class="form-control" id="cardNumber" placeholder="Số thẻ tín dụng" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="expirationDate">Ngày Hết Hạn</label>
+                  <input type="month" class="form-control" id="expirationDate" required />
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="cvv">CVV</label>
+                  <input type="text" class="form-control" id="cvv" placeholder="CVV (3 số)" required />
+                </div>
+              </div>
+
+              <div class="form-group col-md-12">
+                <label for="billingAddress">Địa Chỉ Thanh Toán</label>
+                <input type="text" class="form-control" id="billingAddress" placeholder="Địa chỉ thanh toán" required />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="shippingAddress">Địa Chỉ Giao Hàng</label>
+                  <input type="text" class="form-control" id="shippingAddress" placeholder="Địa chỉ giao hàng" required />
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="phoneNumber">Số Điện Thoại</label>
+                  <input type="text" class="form-control" id="phoneNumber" placeholder="Số điện thoại liên hệ" required />
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block mt-5">Thanh Toán</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+      <div class="footer-box">
+        <a class="footer-box-left" href="">
+          <i class="fa-brands fa-instagram"></i>
+          <span>KAIJEWELRY</span>
+        </a>
+        <a class="footer-box-left" href="">
+          <i class="fa-brands fa-facebook-f"></i>
+          <span>KAIJEWELRY</span>
+        </a>
+        <a class="footer-box-left" href="">
+          <i class="fa-solid fa-phone-flip"></i>
+          <span>098.6162.868</span>
+        </a>
+        <a class="footer-box-left" href="">
+          <i class="fa-solid fa-envelope"></i>
+          <span>098.6162.868</span>
+        </a>
+      </div>
+      <div class="footer-box">
+        <div class="footer-box-icon"><img src="{% static 'img/logo.png' %}" alt="" /></div>
+        <div class="footer-box-desc">JEWELRY STORE IN SAIGON</div>
+        <div class="footer-desc">DESIGN & MADE TO ORDER</div>
+        <div class="footer-desc">since 2024</div>
+      </div>
+      <div class="footer-box">
+        <a href=""><div class="footer-desc">TRANG SỨC</div></a>
+        <a href=""><div class="footer-desc">INSTAGRAM</div></a>
+        <a href=""><div class="footer-desc">BỘ SƯU TẬP</div></a>
+        <a href=""><div class="footer-desc">BÀI VIẾT</div></a>
+        <a href=""><div class="footer-desc">THÔNG TIN</div></a>
+        <a href=""><div class="footer-desc">KAI JEWELRY</div></a>
+      </div>
+    </div>
+  </body>
+</html>

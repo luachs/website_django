@@ -1,0 +1,227 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ------------------header------------------------------- */
+a {
+  color: black;
+  text-decoration: unset;
+}
+.header {
+  background: #d1c7c7;
+  display: flex;
+  justify-content: space-between;
+}
+.list-social,
+.support-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 150px;
+  min-width: 400px;
+}
+.list__social:last-child {
+  border-right: none;
+}
+
+.list__social {
+  border-right: 2px solid black;
+  font-size: 30px;
+  padding: 0 10px;
+}
+.support-bar img {
+  width: 30px;
+  margin: 0 15px;
+}
+.support-bar-search {
+  border-right: 2px solid black;
+}
+.fa-brands {
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 39px;
+  height: 39px;
+  text-align: center;
+}
+.fa-instagram {
+  background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+}
+.fa-facebook-f {
+  background: linear-gradient(45deg, #3b5998, #8b9dc3);
+}
+.fa-twitter {
+  background: linear-gradient(45deg, #1da1f2, #a9d6e5);
+}
+.fa-tiktok {
+  background: linear-gradient(45deg, #000, #010101);
+}
+.support-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Khoảng cách giữa các phần tử */
+}
+.support-bar .search-input {
+  padding: 10px 20px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+.support-bar-search {
+  cursor: pointer;
+}
+.btn-login,
+.btn-register {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-login:hover,
+.btn-register:hover {
+  background-color: #0056b3;
+}
+
+/* -----------------------logo-header------------------------------ */
+.header-logo {
+  background: #eee1e1;
+  text-align: center;
+  padding: 5px;
+}
+.header-logo img {
+  margin-top: -30px;
+  width: 200px;
+}
+/* --------------------hero-------------------------------------- */
+/* -------menu */
+.menu {
+  display: flex;
+  justify-content: center;
+  background: #d9d9d9;
+  padding: 15px;
+}
+.menu-pages {
+  margin-right: 35px;
+  font-size: 18px;
+}
+.menu-active,
+.product-item-active {
+  font-weight: bold;
+}
+/* ---------introduce */
+.hero-introduce img {
+  width: 100vw;
+}
+/* ---------MAIN LINK */
+
+.list-main-link {
+  display: flex;
+  justify-content: start;
+  margin: 10px 20px;
+}
+.main-link {
+  padding: 0 5px;
+}
+/* ----------Main product */
+.design-product {
+  padding: 30px;
+  margin: 0 30px;
+}
+.design-product h2 {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 28px;
+  border-bottom: 1px solid rgb(198, 189, 189);
+}
+/* --------------hero product */
+.list-product {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.product-item {
+  margin: 10px 20px;
+  font-size: 21px;
+}
+.add-product {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid rgb(198, 189, 189);
+  width: 70%;
+  margin: 60px auto 0;
+  padding-bottom: 5px;
+}
+.add-product-item {
+  font-weight: 600;
+  border: none;
+  width: 300px;
+  outline: none;
+  background: rgb(244, 244, 242);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+.button-add {
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+/* -----------------------------------footer ---------------------------------- */
+.footer {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  background: #4b4040;
+  color: #eee1e1;
+  padding: 40px;
+}
+.footer span,
+.footer a {
+  color: #ffffff;
+}
+.footer-box {
+  margin: 0 30px;
+  text-align: center;
+  /* border-right: 1px solid white; */
+}
+.footer-box:last-child {
+  border: none;
+}
+.footer-box:last-child::before {
+  display: none;
+}
+.footer-box-left {
+  display: block;
+  margin-bottom: 20px;
+}
+.footer-box-icon img {
+  width: 130px;
+  background: white;
+  margin-bottom: 10px;
+}
+.footer-box-desc {
+  position: relative;
+  margin-bottom: 30px;
+}
+.footer-box-desc::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  width: 130px;
+  height: 2px;
+  background: #000;
+}
+.footer-box .footer-desc {
+  line-height: 30px;
+}

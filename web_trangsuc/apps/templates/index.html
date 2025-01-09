@@ -1,0 +1,204 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <title>Trang sức</title>
+  </head>
+  <body>      
+    <!-- header -->
+    <div class="header">
+      <div class="list-social">
+        <div class="list__social inst">
+          <a href=""><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <div class="list__social face">
+          <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+        <div class="list__social twit">
+          <a href=""> <i class="fa-brands fa-twitter"></i></a>
+        </div>
+        <div class="list__social tikt">
+          <a href=""><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="support-bar">
+        <input type="text" name="query" placeholder="Tìm kiếm..." class="search-input" />
+        <div class="support-bar-search"><img src={% static "img/search.png" %} alt="" /></div>
+        <div class="support-bar-account"><img src={% static "img/account.png" %} alt="" /></div>
+        <!-- Nút Đăng nhập -->
+        <button class="btn-login">Đăng nhập</button>
+        <!-- Nút Đăng ký -->
+        <button class="btn-register">Đăng ký</button>
+      </div>
+    </div>    
+  <div class="header-logo"><img src="{% static "img/logo.png" %}" alt="" /></div>
+    <!-- hero -->
+    <div class="hero">
+     <!-- menu -->
+     <div class="menu">
+      <a href="{% url 'home' %}"> 
+        <div class="menu-pages menu-active">TRANG CHỦ</div>
+      </a>
+      <a href="{% url 'product' %}">
+        <div class="menu-pages">SẢN PHẨM</div>
+      </a>
+      <a href="{% url 'cart' %}">
+        <div class="menu-pages">GIỎ HÀNG</div>
+      </a>
+      <a href="{% url 'contact' %}">
+        <div class="menu-pages">LIÊN HỆ</div>
+      </a>
+    </div>
+      <!-- introduce -->
+      <div class="hero-introduce"><img src={% static "img/introducemain.png" %} alt="" /></div>
+      <!-- hero main -->
+      <div class="hero-main">
+        <div class="hero-main1">
+          <div class="hero-img1"><img src={% static "img/img_introduce/intro_img1.png" %} alt="" /></div>
+          <div class="hero-img2">
+            <img src={% static "img/img_introduce/intro_img2.png" %} alt="" />
+            <div class="hero-img-desc">
+              <p>Đeo trang sức là cách thể hiện bạn mà không cần một lời nói nào</p>
+              <p>Cuộc sống có bao lâu mà chần chờ, hãy cứ đeo trang sức như chưa từng được đeo nhé.</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-main2">
+          <div class="hero-main2-desc">“Wearing jewelry is the way to express who you are... without saying a word."</div>
+        </div>
+        <div class="hero-main3">
+          <div class="hero-main3-img">
+            <div class="images-container">
+              <img src='{% static "img/img_introduce/intro_img3.png" %}' alt="" />
+              <img src='{% static "img/img_introduce/intro_img4.png" %}' alt="" /> 
+              <img src='{% static "img/img_introduce/intro_img5.png" %}' alt="" /> 
+              <img src='{% static "img/img_introduce/intro_img1.png" %}' alt="" /> 
+              <img src='{% static "img/img_introduce/intro_img2.png" %}' alt="" /> 
+              <img src='{% static "img/img_introduce/intro_img3.png" %}' alt="" /> 
+          </div>
+          <div class="btn-pre">
+            <i class="fa-solid fa-circle-arrow-left"></i>
+          </div>
+          <div class="btn-next">
+            <i class="fa-solid fa-circle-arrow-right"></i>
+          </div>
+        </div>
+        <div class="hero-main4">
+          <div class="hero-main4-desc">TRANG SỨC BẠC THÀNH LẬP TỪ 2012 -- VÒNG VĨNH CỬU -- PERMANET JEWELRY</div>
+          <div class="hero-main4-desc">-- VÒNG VĨNH CỬU --</div>
+          <div class="hero-main4-desc">PERMANET JEWELRY</div>
+          <div class="hero-main4-img">
+            <div class="hero-main4-img-box1">
+              <img src='{% static "img/img_introduce/intro_img6.png" %}' alt="" />
+              <img src='{% static "img/img_introduce/intro_img7.png" %}' alt="" />
+            </div>
+            <div class="hero-main4-img-box2">
+              <img src='{% static "img/img_introduce/intro_img8.png" %}' alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="hero-main5">
+          <div class="hero-main5-desc">BESTSELLER</div>
+          <div class="hero-main5-products">
+            <div class="images-container5">
+              <div class="hero-main5-products-container">
+                <div class="hero-main5-product">
+                  <img src='{% static "img/img_introduce/intro_img10.png" %}' alt="" />
+                  <div class="hero-main5-name">N DEER HORN</div>
+                  <div class="hero-main5-price">490.000đ</div>
+                </div>
+                <div class="hero-main5-product">
+                  <img src='{% static "img/img_introduce/intro_img11.png" %}' alt="" />
+                  <div class="hero-main5-name">N DEER HORN</div>
+                  <div class="hero-main5-price">490.000đ</div>
+                </div>
+                <div class="hero-main5-product">
+                  <img src='{% static "img/img_introduce/intro_img12.png" %}' alt="" />
+                  <div class="hero-main5-name">N DEER HORN</div>
+                  <div class="hero-main5-price">490.000đ</div>
+                </div>
+                <div class="hero-main5-product">
+                  <img src='{% static "img/img_introduce/intro_img11.png" %}'alt="" />
+                  <div class="hero-main5-name">N DEER HORN</div>
+                  <div class="hero-main5-price">490.000đ</div>
+                </div>
+                <div class="hero-main5-product">
+                  <img src='{% static "img/img_introduce/intro_img12.png" %}'alt="" />
+                  <div class="hero-main5-name">N DEER HORN</div>
+                  <div class="hero-main5-price">490.000đ</div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-main5-pre">
+              <i class="fa-solid fa-circle-arrow-left"></i>
+            </div>
+            <div class="hero-main5-next">
+              <i class="fa-solid fa-circle-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+        <div class="h-main6">
+          <div class="hero-main6-desc">BLOG TIPS & HINT</div>
+          <div class="images-container6">
+            <div class="hero-main6-img">
+              <img src='{% static "img/img_introduce/intro_img13.png" %}' alt="" />
+              <div class="hero-main6-img-desc">Tác dụng không lường của bạc 925 sẽ làm bạn bất ngờ</div>
+            </div>
+            <div class="hero-main6-img">
+              <img src='{% static "img/img_introduce/intro_img14.png" %}' alt="" />
+              <div class="hero-main6-img-desc">Tại sao bạc lại bị đen ?</div>
+            </div>
+            <div class="hero-main6-img">
+              <img src='{% static "img/img_introduce/intro_img15.png" %}' alt="" />
+              <div class="hero-main6-img-desc">Dị ứng bạc từ đâu, nguyên nhân có phải do bạc ?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- footer -->
+    <div class="footer">
+      <div class="footer-box">
+        <a class="footer-box-left" href="">
+          <i class="fa-brands fa-instagram"></i>
+          <span>KAIJEWELRY</span>
+        </a>
+        <a class="footer-box-left" href="">
+          <i class="fa-brands fa-facebook-f"></i>
+          <span>KAIJEWELRY</span>
+        </a>
+        <a class="footer-box-left" href="">
+          <i class="fa-solid fa-phone-flip"></i>
+          <span>098.6162.868</span>
+        </a>
+        <a class="footer-box-left" href="">
+          <i class="fa-solid fa-envelope"></i>
+          <span>098.6162.868</span>
+        </a>
+      </div>
+      <div class="footer-box">
+        <div class="footer-box-icon"><img src="{% static 'img/logo.png' %}" alt="" /></div>
+        <div class="footer-box-desc">JEWELRY STORE IN SAIGON</div>
+        <div class="footer-desc">DESIGN & MADE TO ORDER</div>
+        <div class="footer-desc">since 2024</div>
+      </div>
+      <div class="footer-box">
+        <a href=""><div class="footer-desc">TRANG SỨC</div></a>
+        <a href=""><div class="footer-desc">INSTAGRAM</div></a>
+        <a href=""><div class="footer-desc">BỘ SƯU TẬP</div></a>
+        <a href=""><div class="footer-desc">BÀI VIẾT</div></a>
+        <a href=""><div class="footer-desc">THÔNG TIN</div></a>
+        <a href=""><div class="footer-desc">KAI JEWELRY</div></a>
+      </div>
+    </div>
+
+    <!-- script -->
+    <script src='{% static "js/main.js" %}'></script>
+  </body>
+</html>

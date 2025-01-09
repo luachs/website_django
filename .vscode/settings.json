@@ -1,0 +1,7 @@
+{
+  "editor.wordWrap": "off",
+  "editor.formatOnSave": true,
+  "editor.formatOnType": false,
+  "prettier.printWidth": 200,
+  "cSpell.words": ["stylesheet"]
+}
