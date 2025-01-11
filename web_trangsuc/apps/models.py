@@ -1,7 +1,13 @@
 from django.db import models # type: ignore
 from django.contrib.auth.models import User # type: ignore
+from django.contrib.auth.forms import UserCreationForm # type: ignore
 
 # Create your models here.
+#change forms register django
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model =User
+        fields =['username', 'email','first_name', 'last_name', 'password1', 'password2']
 class Product(models.Model):
     name = models.CharField(max_length=200, null=True)
     price = models.IntegerField()

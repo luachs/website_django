@@ -14,6 +14,25 @@
         object-fit: cover; /* Giữ tỉ lệ hình ảnh mà không làm biến dạng */
       }
     </style>
+    <script type="text/javascript">
+      var user ='{{request.user}}'
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+    </script>
     <title>Trang sức</title>
   </head>
   <body>
@@ -39,7 +58,6 @@
       </div>
     </div>
   </div>
-  <p>Username: {{ user.username }}</p>
   <div class="header-logo"><img src="{% static "img/logo.png" %}" alt="" /></div>
     <!-- hero -->
     <div class="hero">
@@ -105,24 +123,12 @@
                 <h5 class="card-price">{{product.price}}đ</h5>
                 <p class="card-text">Mô tả ngắn về sản phẩm 1.</p>
                 <button data-product={{product.id}} data-action='add' class="btn btn-primary update-cart">Thêm vào giỏ</button>
-                <button class="btn btn-success ml-2" onclick="buyNow('Sản phẩm 1')">Mua ngay</button>
+                <button class="btn btn-success ml-2">Mua ngay</button>
               </div>
             </div>
           </div>
           {% endfor %}
       </div>
-
-      {% comment %} <script>
-        function addToCart(productName) {
-          alert(productName + " đã được thêm vào giỏ hàng!");
-        }
-
-        function buyNow(productName) {
-          alert("Bạn đã chọn mua " + productName + " ngay!");
-          window.location.href = "./payment.html";
-        }
-      </script> {% endcomment %}
-      
     </div>
 
     <!-- footer -->
@@ -160,16 +166,8 @@
         <a href=""><div class="footer-desc">KAI JEWELRY</div></a>
       </div>
     </div>
-    {% comment %} script {% endcomment %}
-    <script type="text/javascript">
-      var userInfo = {
-          isAuthenticated: {{ user_authenticated|yesno:'true,false' }},
-          username: "{{ user_username }}"
-      };
-      console.log("User Info:", userInfo);
-  </script>
+   
     <script src="{% static 'js/cart.js'%}"></script>
-    
-
+  
   </body>
 </html>

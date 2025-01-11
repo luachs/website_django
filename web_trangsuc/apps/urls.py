@@ -6,8 +6,10 @@ urlpatterns = [
     path('product/', views.show_products, name='product'),  # Sản phẩm
     path('cart/', views.cart, name='cart'),  # Giỏ hàng
     path('contact/', views.contact, name='contact'),  # Liên hệ
-    path('payment/', views.payment, name='payment'),  # Liên hệ
-    path('login/', views.login_view, name='login'),
-    path('register/', views.register_view, name='register'),
-    path('logout/', views.logout_view, name='logout'),
+    path('payment/', views.payment, name='payment'),  # thanh toán
+    path('update_item/', views.updateItem, name='update_item'),  # 
+    path('register/', views.register, name='register'),
+    path('login/', views.loginPage, name='login'),
+    path('logout/', views.logoutPage, name='logout'),
+    path('search/', views.search, name='search'),
 ]

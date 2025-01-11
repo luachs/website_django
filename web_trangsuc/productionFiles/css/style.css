@@ -71,12 +71,15 @@ a {
   border: none;
   border-radius: 10px;
 }
+.support-bar-search {
+  cursor: pointer;
+}
 .btn-login,
 .btn-register {
   padding: 10px 20px;
   font-size: 14px;
-  color: white;
-  background-color: #007bff;
+  color: #1059a7;
+  border: 1px solid #1059a7;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -85,9 +88,11 @@ a {
 
 .btn-login:hover,
 .btn-register:hover {
-  background-color: #0056b3;
+  background-color: #81abd7;
 }
-
+#cart-icon {
+  width: 50px;
+}
 /* -----------------------logo-header------------------------------ */
 .header-logo {
   background: #eee1e1;
