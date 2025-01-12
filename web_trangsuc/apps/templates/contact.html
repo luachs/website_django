@@ -5,8 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
     <title>Trang sức</title>
   </head>
   <body>
@@ -27,11 +28,41 @@
         </div>
       </div>
       <div class="support-bar">
-        <div class="support-bar-search"><img src={% static "img/search.png" %} alt="" /></div>
-        <div class="support-bar-account"><img src={% static "img/account.png" %} alt="" /></div>
+        <form class="d-flex" role="search" method="POST" action="{%url 'search'%}">
+          {% csrf_token %}
+          <input name="searched" placeholder="Search" class="search-input" />
+          <button type="submit" class="btn btn-link p-0 border-0">
+            <img src="{% static 'img/search.png' %}" alt="Search" class="img-fluid" />
+          </button>
+        </form>
+        <div class="auth-container d-flex justify-content-between align-items-center">
+          <!-- Phần dành cho người dùng đã đăng nhập -->
+          <div class="user-logged-in d-flex align-items-center" style="visibility: {{ user_login }}">
+            <a href="{% url 'logout' %}" class="me-2">
+              <img src="{% static 'img/account.png' %}" alt="Tài khoản" class="img-fluid" />
+            </a>
+            <span>hello! {{ request.user }}</span>
+          </div>
+
+          <!-- Phần dành cho người dùng chưa đăng nhập -->
+          <div class="auth-buttons d-flex" style="visibility: {{ user_not_login }}">
+            <a href="{%url 'login'%}"
+              ><button class="btn btn-primary me-2"><b>Đăng nhập</b></button></a
+            >
+            <a href="{%url 'register'%}"
+              ><button class="btn btn-secondary"><b>Đăng ký</b></button></a
+            >
+          </div>
+        </div>
+
+        <div class="form-inline my-2 my-lg-0 position-relative">
+          <a id="cart-icon" href="{% url 'cart' %}" class="text-decoration-none">
+            <i class="fa-solid fa-cart-shopping fa-lg"></i>
+          </a>
+          <span id="cart-total" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> {{cartItems}} </span>
+        </div>
       </div>
     </div>
-
     <div class="header-logo"><img src="{% static "img/logo.png" %}" alt="" /></div>
     <!-- hero -->
     <div class="hero">

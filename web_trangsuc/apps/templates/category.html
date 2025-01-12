@@ -9,10 +9,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/show_product.css' %}" />
+    <script type="text/javascript">
+      var user ='{{request.user}}'
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+    </script>
   </head>
   <body>
-     <!-- header -->
-     <div class="header">
+    <!-- header -->
+    <div class="header">
       <div class="list-social">
         <div class="list__social inst">
           <a href=""><i class="fa-brands fa-instagram"></i></a>
@@ -46,10 +66,14 @@
         
           <!-- Phần dành cho người dùng chưa đăng nhập -->
           <div class="auth-buttons d-flex" style="visibility: {{ user_not_login }}">
-            <button class="btn btn-primary me-2"><b>Đăng nhập</b></button>
+            <a href ="{%url 'login'%}"><button class="btn btn-primary me-2"><b>Đăng nhập</b></button></a>
             <a href ="{%url 'register'%}"><button class="btn btn-secondary"><b>Đăng ký</b></button></a>
           </div>
         </div>
+        
+        
+        
+        
         <div class="form-inline my-2 my-lg-0 position-relative">
           <a id="cart-icon" href="{% url 'cart' %}" class="text-decoration-none">
             <i class="fa-solid fa-cart-shopping fa-lg"></i>
@@ -62,17 +86,17 @@
         </div>
         
       </div>
-    </div>      
+    </div>     
   <div class="header-logo"><img src="{% static "img/logo.png" %}" alt="" /></div>
     <!-- hero -->
     <div class="hero">
      <!-- menu -->
      <div class="menu">
       <a href="{% url 'home' %}"> 
-        <div class="menu-pages menu-active">TRANG CHỦ</div>
+        <div class="menu-pages">TRANG CHỦ</div>
       </a>
       <a href="{% url 'product' %}">
-        <div class="menu-pages">SẢN PHẨM</div>
+        <div class="menu-pages menu-active">SẢN PHẨM</div>
       </a>
       <a href="{% url 'cart' %}">
         <div class="menu-pages">GIỎ HÀNG</div>
@@ -81,57 +105,45 @@
         <div class="menu-pages">LIÊN HỆ</div>
       </a>
     </div>
-    <section class="vh-100" style="background-color: #eee">
-      <div class="container h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-lg-12 col-xl-11">
-            <div class="card text-black" style="border-radius: 25px">
-              <div class="card-body p-md-5">
-                <div class="row justify-content-center">
-                  <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+    <!-- Navbar Danh Mục -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <!-- Danh Mục Sản Phẩm -->
+             {%for i in categories%}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'category' %}?category={{i.slug}}">{{i.name}}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-                    <form class="mx-1 mx-md-4" method="POST" , action="">
-                      {% csrf_token%}
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                        <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                          <input type="text" name="username" id="form3Example1c" class="form-control" />
-                          <label class="form-label" for="form3Example1c">User Name</label>
-                        </div>
-                      </div>
-
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                        <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                          <input type="password" name="password" id="form3Example1c" class="form-control" />
-                          <label class="form-label" for="form3Example4c">Password</label>
-                        </div>
-                      </div>
-
-                      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="submit" class="btn btn-primary w-50">Login</button>
-                      </div>
-                    </form>
-                    <b
-                      ><p class="text-center mt-3">You don't have a account? <a class="text-primary" href="{% url 'register' %}">Register</a></p></b
-                    >
-                    {% for message in messages%}
-                    <b
-                      ><p class="text-center mt-3">User or password not correct!</p></b
-                    >
-                    {% endfor %}
-                  </div>
-                  <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp" class="img-fluid" alt="Sample image" />
-                  </div>
-                </div>
-              </div>
+       <!-- category -->
+    <div class="container mt-5">
+      <div class="row">
+          {% for product in products%}
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="{{product.ImageURL}}" class="card-img-top" alt="" />
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <h5 class="card-price">{{product.price}}đ</h5>
+              <p class="card-text">Mô tả ngắn về sản phẩm 1.</p>
+              <button data-product={{product.id}} data-action='add' class="btn btn-primary update-cart">Thêm vào giỏ</button>
+              <a href="{% url 'cart' %}"><button class="btn btn-success ml-2 ">Mua ngay</button></a>
             </div>
           </div>
         </div>
+        {% endfor %}
       </div>
-    </section>
+  </div>
+  
     <!-- footer -->
     <div class="footer">
       <div class="footer-box">
@@ -167,9 +179,9 @@
         <a href=""><div class="footer-desc">KAI JEWELRY</div></a>
       </div>
     </div>
+
+    <script src="{% static 'js/cart.js'%}"></script>
   </body>
 </html>
 
-{% comment %}
-<form method="post">{% csrf_token %} {{form.username}} <input type="submit" name="Create user" /></form>
-{% endcomment %}
+
