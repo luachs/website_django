@@ -9,6 +9,30 @@ from .models import *
 from django.contrib.auth.forms import UserCreationForm # type: ignore
 
 # Create your views here.
+def detail(request):
+  if request.user.is_authenticated:
+     customer = request.user
+     order, created = Order.objects.get_or_create(customer = customer, complete = False) 
+     items = order.orderitem_set.all()
+     cartItems = order.get_cart_items
+     user_login = "show"
+     user_not_login = "hidden"
+  else:
+     items = []
+     order = {'get_cart_items' : 0 , 'get_cart_total':0}
+     cartItems = order['get_cart_items']
+     user_login = "hidden"
+     user_not_login = "show"
+  id =request.GET.get('id','')
+  products =Product.objects.filter(id = id)
+  context = {'items' :items, 
+             "order" : order, 
+             'user_login': user_login,
+             'user_not_login':user_not_login,
+             'cartItems':cartItems,
+              'products':products
+             }
+  return render(request, 'detail.html', context)
 
 def category(request):
     categories = Category.objects.filter(is_sub =False)

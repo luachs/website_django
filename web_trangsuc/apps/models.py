@@ -19,6 +19,7 @@ class Product(models.Model):
     category = models.ManyToManyField(Category, related_name='product')
     name = models.CharField(max_length=200, null=True)
     price = models.IntegerField()
+    detail =models.TextField(null=True, blank = True)
     # digital = models .BooleanField(default=False, null = True, blank = False)
     image = models.ImageField(null =True, blank = True)
     def __str__(self):

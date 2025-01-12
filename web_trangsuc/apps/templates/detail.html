@@ -11,23 +11,23 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/show_product.css' %}" />
     <script type="text/javascript">
-      var user ='{{request.user}}'
+      var user = "{{request.user}}";
       function getCookie(name) {
         let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
+        if (document.cookie && document.cookie !== "") {
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
             }
+          }
         }
         return cookieValue;
-    }
-    const csrftoken = getCookie('csrftoken');
+      }
+      const csrftoken = getCookie("csrftoken");
     </script>
   </head>
   <body>
@@ -48,13 +48,13 @@
         </div>
       </div>
       <div class="support-bar">
-        <form class ='d-flex' role ='search' method ='POST' action ="{%url 'search'%}">
+        <form class="d-flex" role="search" method="POST" action="{%url 'search'%}">
           {% csrf_token %}
           <input name="searched" placeholder="Search" class="search-input" />
-          <button  type="submit" class="btn btn-link p-0 border-0">
+          <button type="submit" class="btn btn-link p-0 border-0">
             <img src="{% static 'img/search.png' %}" alt="Search" class="img-fluid" />
           </button>
-        </form> 
+        </form>
         <div class="auth-container d-flex justify-content-between align-items-center">
           <!-- Phần dành cho người dùng đã đăng nhập -->
           <div class="user-logged-in d-flex align-items-center" style="visibility: {{ user_login }}">
@@ -63,69 +63,87 @@
             </a>
             <span>hello! {{ request.user }}</span>
           </div>
-        
+
           <!-- Phần dành cho người dùng chưa đăng nhập -->
           <div class="auth-buttons d-flex" style="visibility: {{ user_not_login }}">
-            <a href ="{%url 'login'%}"><button class="btn btn-primary me-2"><b>Đăng nhập</b></button></a>
-            <a href ="{%url 'register'%}"><button class="btn btn-secondary"><b>Đăng ký</b></button></a>
+            <a href="{%url 'login'%}"
+              ><button class="btn btn-primary me-2"><b>Đăng nhập</b></button></a
+            >
+            <a href="{%url 'register'%}"
+              ><button class="btn btn-secondary"><b>Đăng ký</b></button></a
+            >
           </div>
         </div>
-        
-        
-        
-        
+
         <div class="form-inline my-2 my-lg-0 position-relative">
           <a id="cart-icon" href="{% url 'cart' %}" class="text-decoration-none">
             <i class="fa-solid fa-cart-shopping fa-lg"></i>
           </a>
-          <span 
-            id="cart-total" 
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            {{cartItems}}
-          </span>
+          <span id="cart-total" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> {{cartItems}} </span>
         </div>
-        
       </div>
-    </div>     
-  <div class="header-logo"><img src="{% static "img/logo.png" %}" alt="" /></div>
+    </div>
+    <div class="header-logo"><img src="{% static "img/logo.png" %}" alt="" /></div>
     <!-- hero -->
     <div class="hero">
-     <!-- menu -->
-     <div class="menu">
-      <a href="{% url 'home' %}"> 
-        <div class="menu-pages">TRANG CHỦ</div>
-      </a>
-      <a href="{% url 'product' %}">
-        <div class="menu-pages">SẢN PHẨM</div>
-      </a>
-      <a href="{% url 'cart' %}">
-        <div class="menu-pages">GIỎ HÀNG</div>
-      </a>
-      <a href="{% url 'contact' %}">
-        <div class="menu-pages">LIÊN HỆ</div>
-      </a>
+      <!-- menu -->
+      <div class="menu">
+        <a href="{% url 'home' %}">
+          <div class="menu-pages">TRANG CHỦ</div>
+        </a>
+        <a href="{% url 'product' %}">
+          <div class="menu-pages menu-active">SẢN PHẨM</div>
+        </a>
+        <a href="{% url 'cart' %}">
+          <div class="menu-pages">GIỎ HÀNG</div>
+        </a>
+        <a href="{% url 'contact' %}">
+          <div class="menu-pages">LIÊN HỆ</div>
+        </a>
+      </div>
     </div>
-       <!-- search -->
-    <h4 style ='margin: 20px'>Result search for: {{search}}</h4> </br>
-    <div class="container mt-5">
-      <div class="row">
-        {%for product in keys %}
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <a href ="{%url 'detail'%}?id={{product.id}}"><img src="{{product.ImageURL}}" class="card-img-top" alt="" /></a>
-            <div class="card-body">
-              <h5 class="card-title">{{product.name}}</h5>
-              <h5 class="card-price">{{product.price}}VNĐ</h5>
-              <button data-product={{product.id}} data-action='add' class="btn btn-primary update-cart">Thêm vào giỏ</button>
-              <a href="{% url 'cart' %}"><button class="btn btn-success ml-2 ">Mua ngay</button></a>
+    <!-- detail -->
+    <div class="container-fluid mt-5 mb-5">
+      <div class="row justify-content-center">
+        {% for product in products %}
+        <div class="col-lg-7 col-md-9 mb-5">
+          <!-- Chiếm khoảng 70% chiều rộng màn hình -->
+          <div class="card shadow-lg p-4">
+            <div class="row g-0">
+              <!-- Image Section -->
+              <div class="col-md-6 text-center">
+                <img class="img-fluid rounded" src="{{ product.ImageURL }}" alt="{{ product.name }}" style="max-width: 100%; height: 400px; object-fit: cover" />
+              </div>
+
+              <!-- Product Info Section -->
+              <div class="col-md-6">
+                <div class="card-body">
+                  <!-- Back and Cart Links -->
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                    <a href="{% url 'product' %}" class="btn btn-outline-secondary btn-lg"> <i class="fas fa-arrow-left"></i> Quay lại </a>
+                    <a href="{% url 'cart' %}" class="btn btn-outline-secondary btn-lg">
+                      <i class="fas fa-shopping-cart"></i>
+                    </a>
+                  </div>
+
+                  <!-- Product Name and Price -->
+                  <h2 class="card-title text-uppercase fw-bold">{{ product.name }}</h2>
+                  <h3 class="text-danger fw-bold">{{ product.price }} VNĐ</h3>
+
+                  <!-- Product Details -->
+                  <p class="card-text mt-4" style="font-size: 1.3rem">{{ product.detail }}</p>
+
+                  <!-- Add to Cart Button -->
+                  <button data-product="{{ product.id }}" data-action="add" class="btn btn-danger text-uppercase w-100 py-4 update-cart" style="font-size: 1.2rem">Thêm vào giỏ</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-         {% endfor %}
+        {% endfor %}
+      </div>
     </div>
-  </div>
-  </div>
-  
+
     <!-- footer -->
     <div class="footer">
       <div class="footer-box">
@@ -165,7 +183,3 @@
     <script src="{% static 'js/cart.js'%}"></script>
   </body>
 </html>
-
-{% comment %}
-<form method="post">{% csrf_token %} {{form.username}} <input type="submit" name="Create user" /></form>
-{% endcomment %}
